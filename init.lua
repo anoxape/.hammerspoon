@@ -14,6 +14,11 @@ hs.console.behaviorAsLabels { 'moveToActiveSpace' }
 
 vhs {
     cheatsheet = {
+        content = {
+            mods = {
+                order = { 'shift', 'ctrl', 'alt', 'cmd' },
+            },
+        },
         view = {
             alpha = alpha,
             cache = hs.timer.days(1),

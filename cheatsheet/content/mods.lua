@@ -8,15 +8,15 @@ local _M = {}
 
 _M.config = {
     char = {
-        shift = '⇧',
         ctrl = '⌃',
         alt = '⌥',
+        shift = '⇧',
         cmd = '⌘',
     },
     order = {
-        'shift',
         'ctrl',
         'alt',
+        'shift',
         'cmd',
     },
 }
