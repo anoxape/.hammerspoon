@@ -95,10 +95,10 @@ _M.mapkv = mapkv
 
 local function imapk(acc, fun, gen, param, state)
     for k, _ in gen, param, state do
-        local v = fun(k)
+        local r = fun(k)
 
-        if v ~= nil then
-            acc[#acc + 1] = v
+        if r ~= nil then
+            acc[#acc + 1] = r
         end
     end
 
@@ -109,10 +109,10 @@ _M.imapk = imapk
 
 local function imapv(acc, fun, gen, param, state)
     for _, v in gen, param, state do
-        local v = fun(v)
+        local r = fun(v)
 
-        if v ~= nil then
-            acc[#acc + 1] = v
+        if r ~= nil then
+            acc[#acc + 1] = r
         end
     end
 
@@ -124,10 +124,10 @@ _M.imap = imapv
 
 local function imapkv(acc, fun, gen, param, state)
     for k, v in gen, param, state do
-        local v = fun(k, v)
+        local r = fun(k, v)
 
-        if v ~= nil then
-            acc[#acc + 1] = v
+        if r ~= nil then
+            acc[#acc + 1] = r
         end
     end
 

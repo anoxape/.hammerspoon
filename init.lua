@@ -1,3 +1,5 @@
+-- luacheck: read_globals hs, globals kit vhs
+
 hs.autoLaunch(true)
 hs.consoleOnTop(true)
 hs.dockIcon(false)

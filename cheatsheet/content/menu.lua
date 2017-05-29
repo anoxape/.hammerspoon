@@ -49,7 +49,7 @@ local function command(item)
     end
 end
 
-local role = {}
+local roles = {}
 
 local function list(menu, path)
     local commands = {}
@@ -63,7 +63,7 @@ local function list(menu, path)
                 if children == nil then
                     commands[#commands + 1] = command(item)
                 elseif type(children) == 'table' then
-                    local role = role[item.AXRole]
+                    local role = roles[item.AXRole]
 
                     if role ~= nil then
                         sections[#sections + 1] = role(item, path)
@@ -76,12 +76,12 @@ local function list(menu, path)
     return append(commands, sections)
 end
 
-local function cd(path, step)
-    return path and (path .. ' → ' .. step) or step
+local function cd(parent, step)
+    return parent and (parent .. ' → ' .. step) or step
 end
 
-function role.AXMenuItem(item, path)
-    local path = cd(path, item.AXTitle)
+function roles.AXMenuItem(item, parent)
+    local path = cd(parent, item.AXTitle)
     local children = list(item.AXChildren[1], path)
 
     if #children ~= 0 then
@@ -92,8 +92,8 @@ function role.AXMenuItem(item, path)
     end
 end
 
-function role.AXMenuBarItem(item, path)
-    local children = list(item.AXChildren[1], path)
+function roles.AXMenuBarItem(item, parent)
+    local children = list(item.AXChildren[1], parent)
 
     if #children ~= 0 then
         return tag('div', 'block', item.AXEnabled, {
