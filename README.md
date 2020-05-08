@@ -1,6 +1,6 @@
 # [Hammerspoon](http://www.hammerspoon.org) configuration
 
-* [init](init.lua) - setup configuration
+* [init](init.lua) - configuration
 
 ## Modules
 
@@ -12,12 +12,12 @@
 
 ## Framework
 
-### [kit](kit/) - utility library
+### [kit](kit/): utility library
 
 * [[kit/core](kit/core.lua)] `merge` - merge value into accumulator
 * [[kit/module](kit/module.lua)] `setup` - setup static module with configuration
 
-### [vhs](vhs.lua) - root module
+### [vhs](vhs.lua): root module
 
 * `{}` - setup root module with configuration
-* `[name]` - get module by name
+* `[]` - get module by name
