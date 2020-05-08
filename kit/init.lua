@@ -11,6 +11,7 @@ local _M = module 'core'
 
 local modules = {
     'fun',
+    'lru',
     'module',
     'null',
     'table',

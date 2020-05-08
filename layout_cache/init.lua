@@ -6,12 +6,15 @@ local hs_keycodes = require 'hs.keycodes'
 local currentLayout = hs_keycodes.currentLayout
 local setLayout = hs_keycodes.setLayout
 
+local lru = require 'kit'.lru
+
 -- TODO: https://github.com/Hammerspoon/hammerspoon/issues/615
 
 local _M = {}
 
 _M.config = {
     default = hs_keycodes.layouts()[1],
+    cache_size = 256,
 }
 
 local function update(layout)
@@ -23,9 +26,15 @@ end
 local default, cache
 
 local events = {
-    [hs_filter.windowDestroyed] = function(o) cache[o:id()] = nil end,
-    [hs_filter.windowUnfocused] = function(o) cache[o:id()] = currentLayout() end,
-    [hs_filter.windowFocused] = function(o) update(cache[o:id()] or default) end,
+    [hs_filter.windowDestroyed] = function(window)
+        cache[window:id()] = nil
+    end,
+    [hs_filter.windowUnfocused] = function(window)
+        cache[window:id()] = currentLayout()
+    end,
+    [hs_filter.windowFocused] = function(window)
+        update(cache[window:id()] or default)
+    end,
 }
 
 local filter
@@ -33,8 +42,8 @@ local filter
 function _M.init(config)
     default = config.default
 
-    cache = {}
-    filter = hs_filter.new(true)
+    cache = lru(config.cache_size)
+    filter = hs_filter.new()
 
     for event, fun in pairs(events) do
         filter:subscribe(event, fun)
