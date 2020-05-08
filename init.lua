@@ -51,3 +51,15 @@ kit.eachkv(hs.hotkey.bindSpec, pairs {
     [{ hyper, '/' }] = vhs.cheatsheet.show,
     [{ hyper, 'v' }] = vhs.things.force_paste,
 })
+
+-- spoon
+
+hs.loadSpoon 'MiroWindowsManager'
+
+spoon.MiroWindowsManager:bindHotkeys {
+    up = { hyper, 'up' },
+    right = { hyper, 'right' },
+    down = { hyper, 'down' },
+    left = { hyper, 'left' },
+    fullscreen = { hyper, 'return' },
+}
