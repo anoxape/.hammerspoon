@@ -12,6 +12,12 @@ local alpha = 0.95
 hs.console.alpha(alpha)
 hs.console.behaviorAsLabels { 'moveToActiveSpace' }
 
+hs.window.animationDuration = 0
+
+local hyper = { 'ctrl', 'alt', 'cmd' }
+
+-- vhs
+
 vhs {
     cheatsheet = {
         content = {
@@ -21,10 +27,12 @@ vhs {
         },
         view = {
             alpha = alpha,
-            cache = hs.timer.days(1),
+            cache = hs.timer.hours(1),
         },
     },
-    dock_press = {},
+    dock_press = {
+        modifier = { 'ctrl' },
+    },
     ensure = {
         message = 'Really?',
     },
@@ -39,7 +47,7 @@ kit.each(vhs.ensure.bindSpec, ipairs {
 })
 
 kit.eachkv(hs.hotkey.bindSpec, pairs {
-    [{ { 'ctrl' }, '§' }] = hs.toggleConsole,
-    [{ { 'ctrl' }, 'f1' }] = vhs.cheatsheet.show,
-    [{ { 'cmd', 'ctrl' }, 'v' }] = vhs.things.force_paste,
+    [{ hyper, 'space' }] = hs.toggleConsole,
+    [{ hyper, '/' }] = vhs.cheatsheet.show,
+    [{ hyper, 'v' }] = vhs.things.force_paste,
 })
