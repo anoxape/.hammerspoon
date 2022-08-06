@@ -2,7 +2,7 @@ local ipairs = ipairs
 
 local hs_application = require 'hs.application'
 
-local applicationElement = require 'hs._asm.axuielement'.applicationElement
+local applicationElement = require 'hs.axuielement'.applicationElement
 local bind = require 'hs.hotkey'.bind
 
 local fbind = require 'kit'.fbind
@@ -17,8 +17,8 @@ _M.config = {
 local function press(index)
     local icon = applicationElement(hs_application 'Dock')[1][index]
 
-    if icon:roleDescription() == 'application dock item' then
-        icon:doPress()
+    if icon.AXRole == 'AXDockItem' then
+        icon:performAction('AXPress')
     end
 end
 
