@@ -5,8 +5,7 @@
 ## Modules
 
 * [cheatsheet](cheatsheet/) - show cheatsheet for the frontmost application's menu
-* [dock_press](dock_press/) - bind hotkeys to numbered dock items,
-  requires [hs._asm.axuielement](https://github.com/asmagill/hs._asm.axuielement/)
+* [dock_press](dock_press/) - bind hotkeys to numbered dock items
 * [ensure](ensure/) - request confirmation for application hotkeys
 * [layout_cache](layout_cache/) - cache keyboard layout per window
 
