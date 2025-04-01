@@ -1,10 +1,5 @@
 -- luacheck: read_globals hs, globals kit vhs
 
-hs.autoLaunch(true)
-hs.consoleOnTop(true)
-hs.dockIcon(false)
-hs.menuIcon(false)
-
 kit, vhs = require 'kit', require 'vhs'
 
 local alpha = 0.95
